@@ -119,6 +119,10 @@ module OmniAuth
           end
         end
       end
+      
+      def auth
+        access_token.params.to_h.merge({token: access_token.token})
+      end
 
       def identity
         @identity ||= access_token.get('/api/users.identity').parsed
